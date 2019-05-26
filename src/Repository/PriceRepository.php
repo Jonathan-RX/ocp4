@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Prices;
+use App\Entity\Price;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Prices|null find($id, $lockMode = null, $lockVersion = null)
- * @method Prices|null findOneBy(array $criteria, array $orderBy = null)
- * @method Prices[]    findAll()
- * @method Prices[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Price|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Price|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Price[]    findAll()
+ * @method Price[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PricesRepository extends ServiceEntityRepository
+class PriceRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Prices::class);
+        parent::__construct($registry, Price::class);
     }
 
     // /**
-    //  * @return Prices[] Returns an array of Prices objects
+    //  * @return Price[] Returns an array of Price objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class PricesRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Prices
+    public function findOneBySomeField($value): ?Price
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')
