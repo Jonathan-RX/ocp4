@@ -923,7 +923,7 @@
       <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="232" parent="4" name="prices">
+    <table id="232" parent="4" name="price">
       <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
@@ -944,177 +944,153 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="230" name="date_visite">
+    <column id="236" parent="230" name="date_visit">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="230" name="payment">
+    <column id="237" parent="230" name="duration">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="230" name="invoice_first_name">
+    <column id="238" parent="230" name="payment">
       <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="230" name="invoice_last_name">
+    <column id="239" parent="230" name="mail">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="230" name="invoice_adress1">
+    <column id="240" parent="230" name="order_number">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="230" name="invoice_adress2">
-      <Position>8</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="242" parent="230" name="invoice_country">
-      <Position>9</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="243" parent="230" name="invoice_postal_code">
-      <Position>10</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="244" parent="230" name="invoice_city">
-      <Position>11</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="245" parent="230" name="mail">
-      <Position>12</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="246" parent="230" name="PRIMARY">
+    <key id="241" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="247" parent="231" name="version">
+    <column id="242" parent="231" name="version">
       <Position>1</Position>
       <DataType>varchar(14)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="231" name="executed_at">
+    <column id="243" parent="231" name="executed_at">
       <Position>2</Position>
       <Comment>(DC2Type:datetime_immutable)</Comment>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="249" parent="231" name="PRIMARY">
+    <key id="244" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="250" parent="232" name="id">
+    <column id="245" parent="232" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="232" name="label">
+    <column id="246" parent="232" name="regular">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="232" name="age_min">
+    <column id="247" parent="232" name="child">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="232" name="age_max">
+    <column id="248" parent="232" name="senior">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="232" name="price_day">
+    <column id="249" parent="232" name="discount">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="232" name="price_half">
+    <column id="250" parent="232" name="free">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="256" parent="232" name="PRIMARY">
+    <key id="251" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="257" parent="233" name="id">
+    <column id="252" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="233" name="command_id">
+    <column id="253" parent="233" name="command_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="233" name="first_name">
+    <column id="254" parent="233" name="first_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="233" name="last_name">
+    <column id="255" parent="233" name="last_name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="233" name="country">
+    <column id="256" parent="233" name="country">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="233" name="birth_date">
+    <column id="257" parent="233" name="birth_date">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="263" parent="233" name="IDX_54469DF433E1689A">
+    <column id="258" parent="233" name="discount">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="259" parent="233" name="IDX_54469DF433E1689A">
       <ColNames>command_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="264" parent="233" name="PRIMARY">
+    <key id="260" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="265" parent="233" name="FK_54469DF433E1689A">
+    <foreign-key id="261" parent="233" name="FK_54469DF433E1689A">
       <ColNames>command_id</ColNames>
       <RefSchemaName>ocp4</RefSchemaName>
       <RefTableName>commands</RefTableName>

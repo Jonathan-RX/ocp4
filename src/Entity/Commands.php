@@ -58,6 +58,8 @@ class Commands
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
+        $this->date_command = new \DateTime();
+        $this->order_number = ' ';
     }
 
     public function getId(): ?int
