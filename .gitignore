@@ -4,8 +4,9 @@
 /.env.local.php
 /.env.*.local
 /.idea
-.idea/
+git.idea/
 .idea/*
+/.idea/*
 /public/bundles/
 /var/
 /vendor/
@@ -19,3 +20,5 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+.idea/deployment.xml
+.idea/workspace.xml
