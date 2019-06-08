@@ -54,5 +54,25 @@ h1{
 
 .list-group .active, .btn-primary:hover{
     background: #C82D00;
-    border-color:  darkred;
+    border-color:00,0  darkred;
+}
+
+.footer li:first-child{
+    list-style: none;
+}
+
+.footer .card{
+    padding:0;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.footer a{
+    color: grey;
+    font-size: 0.8em
+}
+
+.copyright{
+    color: #BBB;
+    font-size: 0.7em;
 }
