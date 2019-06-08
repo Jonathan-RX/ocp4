@@ -46,6 +46,11 @@ class Commands
     private $mail;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $nbr_tickets;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tickets", mappedBy="command", cascade={"persist"})
      */
     private $tickets;
@@ -123,6 +128,16 @@ class Commands
         $this->mail = $mail;
 
         return $this;
+    }
+
+    public function getNbrTickets()
+    {
+        return $this->nbr_tickets;
+    }
+
+    public function setNbrTickets($nbr_tickets): void
+    {
+        $this->nbr_tickets = $nbr_tickets;
     }
 
     public function getOrderNumber()

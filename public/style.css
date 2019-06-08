@@ -4,17 +4,55 @@ body{
 
 .container{
     background: #222;
+    padding: 0;
 }
 
 h1{
     color: white;
 }
 
-.list-group a{
-    color: #C82D00;
+.red .card{
+    background: #C82D00 url('https://www.ticketlouvre.fr/louvre/b2c/assets/img/louvre/home_crumb.png') 2% center no-repeat;
 }
 
-.list-group .active{
+.ban .card{
+    padding: 10px 20px 0px;
+}
+
+.ban h2{
+    font-family: Georgia, sans-serif;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.ban p{
+    color: rgb(192, 57, 43);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+.gray .card{
+    background: rgb(78, 78, 78);
+    color: white;
+    font-weight: bold;
+    padding:5px;
+}
+
+.card{
+    border:none;
+}
+
+.form-control, .btn-primary, .card{
+    border-radius: 0;
+}
+
+.list-group a, .btn-primary, .btn-primary:active{
+    background: #9a2200;
+    border-color:  darkred;
+    color: white;
+}
+
+.list-group .active, .btn-primary:hover{
     background: #C82D00;
     border-color:  darkred;
 }
