@@ -2,13 +2,20 @@ body{
     background: #331107;
 }
 
-.container{
-    background: #222;
+.container, .col, .row, .card{
     padding: 0;
+}
+
+.nopadding{
+    padding:0 !important;
 }
 
 h1{
     color: white;
+}
+
+.header{
+    background: #222;
 }
 
 .red .card{
@@ -57,6 +64,10 @@ h1{
     border-color:00,0  darkred;
 }
 
+.nopadding .card{
+    padding: 0px 30px !important;
+}
+
 .footer li:first-child{
     list-style: none;
 }
@@ -73,6 +84,12 @@ h1{
 }
 
 .copyright{
+    background: #222;
     color: #BBB;
     font-size: 0.7em;
+}
+
+.no-gutters{
+    margin:0;
+    padding:0;
 }

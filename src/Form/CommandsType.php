@@ -19,19 +19,25 @@ class CommandsType extends AbstractType
         $builder
             ->add('date_visit', DateType::class, [
                 'widget' => 'single_text',
-                'html5' => true,
+                'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
+                'label' => 'Jours de votre visite'
             ])
-            ->add('nbr_tickets', IntegerType::class)
+            ->add('nbr_tickets', IntegerType::class, [
+                'label'=>'Nombre de tickets'
+            ])
             ->add('duration', ChoiceType::class, [
                 'choices' => [
                     'Journée' => true,
                     'Demi-journée' => false
                 ],
                 'attr' => ['class' => 'duration'],
-                'placeholder' => 'Choix du type de billet'
+                'placeholder' => 'Choix du type de billet',
+                'label' => 'Durée de la visite'
             ])
-            ->add('mail', EmailType::class)
+            ->add('mail', EmailType::class, [
+                'label' => 'Adresse mail'
+            ])
             ->add('valider', SubmitType::class)
         ;
     }
