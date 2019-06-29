@@ -18,6 +18,9 @@ class DateCommandsValidator extends ConstraintValidator
 
     public function validate($value, Constraint $constraint)
     {
+        $commands = $this->context->getObject();
+        $repository = $this->em->getRepository(Commands::class);
+
         if (!$constraint instanceof DateCommands) {
             throw new UnexpectedTypeException($constraint, DateCommands::class);
         }
@@ -28,11 +31,9 @@ class DateCommandsValidator extends ConstraintValidator
 
         $today = new \DateTime('today',new \DateTimeZone('Europe/Paris'));
         $interval = $today->diff($value);
-        $commands = $this->context->getObject();
-        $repository = $this->em->getRepository(Commands::class);
 
         // Check Hour for today
-        if ($interval->days === 0 AND $today->format('h') > 18) {
+        if ($interval->days === 0 AND $today->format('h') > 17) {
             $this->context->buildViolation($constraint->messageHourToday)
                 ->addViolation();
         }
@@ -41,19 +42,11 @@ class DateCommandsValidator extends ConstraintValidator
                 ->addViolation();
         }
 
-        // Check past date
-        if ($interval->days < 0) {
-            $this->context->buildViolation($constraint->messagePastDate)
+        // Check number tickets by date
+        $nbrTickets = $repository->countTicketsDay($value);
+        if ($nbrTickets + $commands->getNbrTickets() > 1000) {
+            $this->context->buildViolation($constraint->messageToManyTickets)
                 ->addViolation();
         }
-
-        // Check number tickets by date
-        //$nbrTickets = $repository->count(['date_visit' => $value]);
-        $nbrTickets = $repository->createQueryBuilder('v')
-            ->select('COUNT(v)')
-            ->leftJoin('v.tickets', 'e')
-            ->where('v.date_visit = :value');
-        dump($nbrTickets);
-        dump($value->format('Y-m-d 00:00:00'));
     }
 }

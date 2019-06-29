@@ -68,6 +68,26 @@ h1{
     padding: 0px 30px !important;
 }
 
+/* -- Tickets form -- */
+
+
+legend{
+    display:none;
+}
+
+fieldset.form-group{
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width:49%;margin-left:5px;float:left;
+}
+fieldset.form-group fieldset{
+    border:none;
+    padding:none;
+    float:none;
+    width: 100%;
+}
+
 .footer li:first-child{
     list-style: none;
 }

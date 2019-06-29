@@ -8,7 +8,6 @@ use App\Form\Handler\CommandsTypeHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service;
 
 class HomeController extends AbstractController
 {
@@ -22,7 +21,7 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $handler->newCommand($commands);
-            return $this->redirectToRoute('test', ['id'=>$commands->getId()]);
+            return $this->redirectToRoute('tickets', ['id'=>$commands->getId()]);
         }
         return $this->render('pages/home.html.twig', [
             'form' => $form->createView()
