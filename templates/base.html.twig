@@ -3,22 +3,95 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/style.css">
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
+
+
+
     <!-- Page Content -->
     <div class="container">
+        {% for label, messages in app.flashes(['success', 'warning']) %}
+            {% for message in messages %}
+                <div class="flash-{{ label }} flash-message col-s12 center">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
-                        {% block body %}{% endblock %}
+
+        <div class="row header pt-3 justify-content-center justify-content-md-start">
+
+            <div class="col-ld-2 center mt-2">
+                <img src="https://www.ticketlouvre.fr/louvre/b2c/assets/img/logo_Louvre.png" />
+            </div>
+            <div class="col-ld-9 pl-4">
+                <h1 class="my-3 h2 font-weight-light">Billetterie officielle du musée du Louvre</h1>
+            </div>
+            <!-- /.col-lg-3 -->
+        </div>
+
+        <div class="row">
+            <div class="col red">
+                <div class="card">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col ban">
+                <div class="card">
+                    <h2>Bienvenue sur le site officiel de vente en ligne du Louvre</h2>
+                    <p>En période de forte affluence, la réservation en ligne de votre créneau horaire, qui seul peut garantir votre entrée au musée, est fortement recommandée.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col gray">
+                <div class="card">
+                    Choisissez vos billets :
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card pb-4">
+                    <img class="img-fluid" src="https://cdn-imgix.headout.com/tour/5980/TOUR-IMAGE/1dd96726-9311-41f5-ac66-c729a8761275-3909-paris-louvre-museum-priority-access-with-flexible-entry-time-01.jpg?auto=compress&fm=pjpg&w=900&h=400&crop=faces&fit=min" alt="Musée du louvre">
+                </div>
+            </div>
+        </div>
+        {% block body %}{% endblock %}
 
 
+        <div class="row">
+            <div class="col footer">
+                <div class="card">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/index.cfm/CGV">Conditions générales</a></li>
+                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/assets/CGV-B2C-Prod/EN_CGV_EPML_GROUPES.pdf">Conditions générales pour les groupes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col mt-1">
+                <p class="text-center">© Musée du Louvre - All rights reserved</p>
+            </div>
+        </div>
     </div>
+
+
     <!-- /.container -->
 
-        {% block javascripts %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

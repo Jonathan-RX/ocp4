@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Musée du Louvre, création des tickets' %}
+
+{% block body %}
+
+
+    {{ form_start(form) }}
+    {% for key, tk in form %}
+        <div class="row bg-white">
+            <div class="col-sm nopadding">
+                <div class="card p-2 pl-3 ticket">
+                    {{ form_widget(form) }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="row bg-white">
+            <div class="col-sm nopadding">
+                <div class="card p-2 pl-3 ticket">
+
+                    {{ form_errors(form) }}
+                    <button class="btn btn-primary">Valider</button>
+                </div>
+            </div>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/locales/bootstrap-datepicker.en-GB.min.js" charset="UTF-8"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                'startView': '3',
+                endDate: '+0d',
+                language: 'fr-FR'
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets  %}
+    <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+{% endblock %}

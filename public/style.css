@@ -1,0 +1,115 @@
+body{
+    background: #331107;
+}
+
+.container, .col, .row, .card{
+    padding: 0;
+}
+
+.nopadding{
+    padding:0 !important;
+}
+
+h1{
+    color: white;
+}
+
+.header{
+    background: #222;
+}
+
+.red .card{
+    background: #C82D00 url('https://www.ticketlouvre.fr/louvre/b2c/assets/img/louvre/home_crumb.png') 2% center no-repeat;
+}
+
+.ban .card{
+    padding: 10px 20px 0px;
+}
+
+.ban h2{
+    font-family: Georgia, sans-serif;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.ban p{
+    color: rgb(192, 57, 43);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+.gray .card{
+    background: rgb(78, 78, 78);
+    color: white;
+    font-weight: bold;
+    padding:5px;
+}
+
+.card{
+    border:none;
+}
+
+.form-control, .btn-primary, .card{
+    border-radius: 0;
+}
+
+.list-group a, .btn-primary, .btn-primary:active{
+    background: #9a2200;
+    border-color:  darkred;
+    color: white;
+}
+
+.list-group .active, .btn-primary:hover{
+    background: #C82D00;
+    border-color:00,0  darkred;
+}
+
+.nopadding .card{
+    padding: 0px 30px !important;
+}
+
+/* -- Tickets form -- */
+
+
+legend{
+    display:none;
+}
+
+fieldset.form-group{
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width:49%;margin-left:5px;float:left;
+}
+fieldset.form-group fieldset{
+    border:none;
+    padding:none;
+    float:none;
+    width: 100%;
+}
+
+.footer li:first-child{
+    list-style: none;
+}
+
+.footer .card{
+    padding:0;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.footer a{
+    color: grey;
+    font-size: 0.8em
+}
+
+.copyright{
+    background: #222;
+    color: #BBB;
+    font-size: 0.7em;
+}
+
+.no-gutters{
+    margin:0;
+    padding:0;
+}

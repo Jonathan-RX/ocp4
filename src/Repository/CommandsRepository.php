@@ -19,6 +19,19 @@ class CommandsRepository extends ServiceEntityRepository
         parent::__construct($registry, Commands::class);
     }
 
+    public function countTicketsDay($date){
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c)')
+            ->leftJoin('c.tickets', 't')
+            ->where('c.date_visit = :dat')
+            ->andWhere('c.payment = true')
+            ->setParameter('dat', $date)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    //public function findAllByDateJoinedByTickets
+
     // /**
     //  * @return Commands[] Returns an array of Commands objects
     //  */

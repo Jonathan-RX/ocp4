@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TicketsRepository")
@@ -18,33 +19,47 @@ class Tickets
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Commands", inversedBy="tickets")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $command;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez remplir ce champ")
+     * @Assert\Length(min = 2, max = 3, minMessage="", maxMessage="")
      */
     private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez remplir ce champ")
+     * @Assert\Length(min = 2, max = 3, minMessage="", maxMessage="")
      */
     private $last_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez remplir ce champ")
+     * @Assert\Country
      */
     private $country;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotNull(message="Veuillez remplir ce champ")
+     * @Assert\DateTime
      */
     private $birth_date;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $discount;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price;
 
     public function getId(): ?int
     {
@@ -99,12 +114,12 @@ class Tickets
         return $this;
     }
 
-    public function getBirthDate(): ?string
+    public function getBirthDate(): ?\DateTime
     {
         return $this->birth_date;
     }
 
-    public function setBirthDate(string $birth_date): self
+    public function setBirthDate(\DateTime $birth_date): self
     {
         $this->birth_date = $birth_date;
 
@@ -119,5 +134,17 @@ class Tickets
     public function setDiscount($discount): void
     {
         $this->discount = $discount;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
     }
 }

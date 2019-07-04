@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use App\Validator\Constraints as AcmeAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommandsRepository")
@@ -25,11 +27,16 @@ class Commands
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime
+     * @Assert\GreaterThanOrEqual("today", message="Réservation impossible pour un jour passé.")
+     * @AcmeAssert\DateCommands
      */
     private $date_visit;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotNull()
      * true for day
      * false for half day
      */
@@ -42,8 +49,16 @@ class Commands
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $mail;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\GreaterThanOrEqual(1, message="Veuillez choisir un nombre de ticket")
+     */
+    private $nbr_tickets;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tickets", mappedBy="command", cascade={"persist"})
@@ -58,6 +73,8 @@ class Commands
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
+        $this->date_command = new \DateTime();
+        $this->order_number = ' ';
     }
 
     public function getId(): ?int
@@ -121,6 +138,16 @@ class Commands
         $this->mail = $mail;
 
         return $this;
+    }
+
+    public function getNbrTickets()
+    {
+        return $this->nbr_tickets;
+    }
+
+    public function setNbrTickets($nbr_tickets): void
+    {
+        $this->nbr_tickets = $nbr_tickets;
     }
 
     public function getOrderNumber()
