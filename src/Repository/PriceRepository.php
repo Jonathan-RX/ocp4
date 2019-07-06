@@ -36,6 +36,15 @@ class PriceRepository extends ServiceEntityRepository
     }
     */
 
+    public function findPrice()
+    {
+        return $this->createQueryBuilder('p')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Price
     {

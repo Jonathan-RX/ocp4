@@ -6,6 +6,7 @@ namespace App\Form\Handler;
 
 use App\Entity\Commands;
 use Doctrine\Common\Persistence\ObjectManager;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -28,6 +29,8 @@ class CommandsTypeHandler
 
     public function newCommand(Commands $commands)
     {
+        $orderNumber = Uuid::uuid4();
+        $commands->setOrderNumber($orderNumber);
         $this->session->set('commands', $commands);
         $this->objectManager->persist($commands);
         $this->objectManager->flush();
