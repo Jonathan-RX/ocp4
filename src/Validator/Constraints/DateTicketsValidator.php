@@ -27,7 +27,6 @@ class DateTicketsValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, DateTickets::class);
         }
         $nbrTickets = $repository->countTicketsDay($value);
-        dump($nbrTickets);
         if ($nbrTickets + $commands->getNbrTickets() > 1000) {
             $this->context->buildViolation($constraint->message)
                 ->addViolation();

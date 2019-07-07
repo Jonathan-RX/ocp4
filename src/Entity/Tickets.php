@@ -53,6 +53,7 @@ class Tickets
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Assert\NotNull(message="Une erreur s'est produite, veuillez recharger la page")
      */
     private $discount;
 
