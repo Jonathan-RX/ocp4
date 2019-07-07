@@ -42,11 +42,5 @@ class DateCommandsValidator extends ConstraintValidator
                 ->addViolation();
         }
 
-        // Check number tickets by date
-        $nbrTickets = $repository->countTicketsDay($value);
-        if ($nbrTickets + $commands->getNbrTickets() > 1000) {
-            $this->context->buildViolation($constraint->messageToManyTickets)
-                ->addViolation();
-        }
     }
 }

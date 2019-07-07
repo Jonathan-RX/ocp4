@@ -7,28 +7,35 @@ namespace App\Services;
 use App\Entity\Commands;
 use App\Entity\Price;
 use App\Entity\Tickets;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 class TicketsPrice
 {
-    /**
-     * @var EntityManager
-     */
-    private $em;
 
-    public function __construct(EntityManager $em)
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->em = $em;
+        $this->entityManager = $entityManager;
     }
 
     public function priceCalcul(Tickets $tickets, Commands $commands){
-        $prices = $this->em->getRepository(Price::class)->findOneById(1);
+        $prices = $this->entityManager->getRepository(Price::class)->findPrice();
         $birthday = $tickets->getBirthDate();
         $diff = $birthday->diff(new \DateTime());
         $age = $diff->y;
-        $discount = $tickets->getDiscount();
+
         $duration = $commands->getDuration();
-        // Faire la condition pour savoir le prix -> $resultprice
+        $resultprice = $prices->getRegular();
+        if($age < 4){$resultprice = $prices->getFree();}
+        if($age >= 4 && $age < 12){$resultprice = $prices->getChild();}
+        if($age >= 60){$resultprice = $prices->getSenior();}
+        if($tickets->getDiscount() === true && $resultprice > $prices->getDiscount()){
+            $resultprice = $prices->getDiscount();
+        }
         if($duration === false){
             $resultprice = $resultprice/2;
         }

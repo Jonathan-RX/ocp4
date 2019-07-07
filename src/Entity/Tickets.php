@@ -26,14 +26,14 @@ class Tickets
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull(message="Veuillez remplir ce champ")
-     * @Assert\Length(min = 2, max = 3, minMessage="", maxMessage="")
+     * @Assert\Length(min = 2, max = 50, minMessage="", maxMessage="")
      */
     private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull(message="Veuillez remplir ce champ")
-     * @Assert\Length(min = 2, max = 3, minMessage="", maxMessage="")
+     * @Assert\Length(min = 2, max = 50, minMessage="", maxMessage="")
      */
     private $last_name;
 
