@@ -25,7 +25,7 @@ class TicketsController extends AbstractController{
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ticketsHandler->TicketRequest($nbrTickets, $commands);
-            return $this->render('pages/tickets.html.twig', [
+            return $this->render('pages/summary.html.twig', [
                 'form' => $form->createView()
             ]);
 
