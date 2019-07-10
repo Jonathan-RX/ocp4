@@ -1,8 +1,5 @@
 <?php
-
-
 namespace App\Validator\Constraints;
-
 
 use App\Entity\Commands;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,7 +7,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-class DateCommandsValidator extends ConstraintValidator
+class CheckCommandHoursValidator extends ConstraintValidator
 {
     private $em;
 
@@ -24,25 +21,26 @@ class DateCommandsValidator extends ConstraintValidator
         $commands = $this->context->getObject();
         $repository = $this->em->getRepository(Commands::class);
 
-        if (!$constraint instanceof DateCommands) {
-            throw new UnexpectedTypeException($constraint, DateCommands::class);
+        if (!$constraint instanceof CheckCommandHours) {
+            throw new UnexpectedTypeException($constraint, CheckCommandHours::class);
         }
 
         if (null === $value || '' === $value) {
             return;
         }
 
-        $day = $commands->getDateVisit()->format('d/m');
-        $dayOfWeek = $commands->getDateVisit()->format('w');
+        $today = new \DateTime('today',new \DateTimeZone('Europe/Paris'));
+        $interval = $today->diff($value);
 
-        if ($day === '01/05' OR $day === '01/11' OR $day === '25/12') {
-            $this->context->buildViolation($constraint->message)
+        // Check Hour for today
+        if ($interval->days === 0 AND $today->format('h') > 17) {
+            $this->context->buildViolation($constraint->messageHourToday)
+                ->addViolation();
+        }
+        if($commands->getDuration() == true AND $interval->days === 0 AND date('H') > 13){
+            $this->context->buildViolation($constraint->messageHalfToday)
                 ->addViolation();
         }
 
-        if ($dayOfWeek === '2' OR $dayOfWeek === '0') {
-            $this->context->buildViolation($constraint->message)
-                ->addViolation();
-        }
     }
 }
