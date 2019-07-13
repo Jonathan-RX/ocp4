@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TicketsController extends AbstractController{
 
     /**
-    * @Route("/tickets/{id}", name="tickets")
+    * @Route("/tickets/{order_number}", name="tickets")
     */
     public function tickets(Request $request, Commands $commands, TicketsTypeHandler $ticketsHandler){
         $nbrTickets = $ticketsHandler->generateTickets($commands);
@@ -25,9 +25,7 @@ class TicketsController extends AbstractController{
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ticketsHandler->TicketRequest($nbrTickets, $commands);
-            return $this->render('pages/summary.html.twig', [
-                'form' => $form->createView()
-            ]);
+            return $this->redirectToRoute('summary', ['order_number'=>$commands->getOrderNumber()]);
 
         }
 

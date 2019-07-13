@@ -21,7 +21,7 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $handler->newCommand($commands);
-            return $this->redirectToRoute('tickets', ['id'=>$commands->getId()]);
+            return $this->redirectToRoute('tickets', ['order_number'=>$commands->getOrderNumber()]);
         }
         return $this->render('pages/home.html.twig', [
             'form' => $form->createView()
