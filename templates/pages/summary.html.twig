@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Musée du Louvre, Récapitulatif' %}
+
+{% block body %}
+
+    <div class="row bg-white">
+        <h3 class="col-sm">Recapitulatif</h3>
+    </div>
+    <div class="row bg-white">
+        <div class="col-sm nopadding">
+            <div class="card p-2 pl-3 ticket">
+            <h5>Informations de la visite</h5>
+                Jour de la visite: {{ commands.getDateVisit|date("d/m/Y") }}<br />
+                Période:
+                {% if commands.getDuration == true %}
+                    Journée
+                {% else %}
+                    Demi-Journée
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% for ticket in tickets %}
+<div class="row bg-white">
+    <div class="col-sm nopadding">
+        <div class="card p-2 pl-3 ticket">
+            Nom: {{ ticket.getLastName }}<br />
+            Prénom: {{ ticket.getFirstName }}<br />
+            Pays: {{ ticket.getCountry }}<br />
+            Date de naissance: {{ ticket.getBirthDate|date('d/m/Y') }}<br />
+            Tarif réduit:
+                {% if ticket.getDiscount == true %}
+                    Oui
+                {% else %}
+                    Non
+                {% endif %}<br />
+            Prix du billet: {{ ticket.getPrice }} €
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+<div class="row bg-white">
+    <div class="col-sm nopadding">
+        <div class="card p-2 pl-3 ticket">
+            <form action="{{ path('striperedirect', {'order_number': commands.getOrderNumber()}) }}" method="post">
+                <h5>Total de la commande</h5>
+                Total HT: {{ pricewt }} €<br />
+                TVA: {{ taxes }} € <br />
+                Total TTC: {{ priceati }} €
+                <p><button class="ui button" type="submit">Régler la commande</button></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block stylesheets  %}
+{% endblock %}

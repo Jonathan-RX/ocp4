@@ -45,8 +45,16 @@
                 format: 'yyyy-mm-dd',
                 startDate: '0d',
                 language: 'fr-FR',
-                datesDisabled: ['xxxx-05-01', 'xxxx-11-01', 'xxxx-12-25'],
-                daysOfWeekDisabled: [0]
+                daysOfWeekDisabled: [2,0],
+                beforeShowDay: function (date) {
+                    var curr_date = date.getDate();
+                    var curr_month = date.getMonth() + 1;
+                    var formattedDate = curr_date + "/" + curr_month
+                    if (formattedDate == '1/5' || formattedDate == '1/11' || formattedDate == '25/12') {
+                        return {classes: 'disabled disabled-date'};
+                    }
+                    return;
+                }
             });
         });
     </script>

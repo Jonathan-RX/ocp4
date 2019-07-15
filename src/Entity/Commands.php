@@ -31,6 +31,7 @@ class Commands
      * @Assert\DateTime
      * @Assert\GreaterThanOrEqual("today", message="Réservation impossible pour un jour passé.")
      * @AcmeAssert\DateCommands
+     * @AcmeAssert\CheckCommandHours
      * @AcmeAssert\DateTickets
      */
     private $date_visit;
