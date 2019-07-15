@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Musée du Louvre, Récapitulatif' %}
+
+{% block body %}
+
+    <div class="row bg-white">
+        <h3 class="col-sm">Veuillez patienter...</h3>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        var stripe = Stripe('pk_test_c4l5H82if8OGbq0AHQBuZSa900U00gHkuW');
+        stripe.redirectToCheckout({
+            sessionId: '{{ session.id }}'
+        }).then(function (result) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
+        });
+    });
+
+</script>
+{% endblock %}
+
+{% block stylesheets  %}
+<style type="text/css">
+    #card-element{
+        display:block;
+        padding:5px;
+        border: 1px solid black;
+        border-radius: 2px;
+        margin: 10px;
+    }
+    #card-element *{
+        display: none;
+        border: 1px solid black;
+    }
+</style>
+{% endblock %}

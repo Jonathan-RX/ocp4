@@ -19,28 +19,9 @@ class SummaryController extends AbstractController
     {
 
         $tickets = $commands->getTickets();
-        $priceWT = 0;
-        $taxes = 0;
-
-        foreach($tickets as $t){
-            $priceWT += round(($t->getPrice()/1.2),2);
-            $taxes += round(($priceWT * 0.2), 2);
-            $priceATI = $t->getPrice();
-        }
-
-        \Stripe\Stripe::setApiKey('sk_test_UJYp1WP5IrUlZuTUpbmKjXX400JZdbgQzq');
-        $session = \Stripe\Checkout\Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [[
-                'name' => 'Réservation de tickets',
-                'amount' => $priceATI*100,
-                'currency' => 'eur',
-                'quantity' => 1,
-            ]],
-            'success_url' => 'https://example.com/success',
-            'cancel_url' => 'https://example.com/cancel',
-        ]);
-        dump($session);
+        $priceWT = \App\Services\CommandTotal::getTotalWT($commands);
+        $taxes = \App\Services\CommandTotal::getTotalTaxes($commands);
+        $priceATI = \App\Services\CommandTotal::getTotalATI($commands);
 
         return $this->render('pages/summary.html.twig',
             [
@@ -49,7 +30,6 @@ class SummaryController extends AbstractController
                 'pricewt'=>$priceWT,
                 'taxes'=>$taxes,
                 'priceati'=>$priceATI,
-                'session'=>$session
             ]);
     }
 }
