@@ -1,0 +1,243 @@
+{% block body_html %}
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+        {% for label, messages in app.flashes(['success', 'warning']) %}
+            {% for message in messages %}
+                <div class="flash-{{ label }} flash-message col-s12 center">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+
+        <div class="row header pt-3 justify-content-center justify-content-md-start">
+
+            <div class="col-ld-2 center mt-2">
+                <img src="https://www.ticketlouvre.fr/louvre/b2c/assets/img/logo_Louvre.png" />
+            </div>
+            <div class="col-ld-9 pl-4">
+                <h1 class="my-3 h2 font-weight-light">Billetterie officielle du musée du Louvre</h1>
+            </div>
+            <!-- /.col-lg-3 -->
+        </div>
+
+        <div class="row">
+            <div class="col red">
+                <div class="card">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col ban">
+                <div class="card">
+                    <h2>Merci pour l'achat de vos billets sur notre site</h2>
+                    <p>Vous trouverez ci dessous vos billets numériques, à présenter lors de votre visite accompagnés des justificatifs de l'age des visiteurs, comme une carte d'identitée, permis de conduire, passeport, etc. </p>
+                    <p>Si vous bénéficiez d'un tarif réduit, n'oubliez pas de présenter votre justificatif correspond (carte étudiant, ancien combattant, etc)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col gray">
+                <div class="card">
+                    Vos billets :
+                </div>
+            </div>
+        </div>
+
+
+
+        {% for commands.getTickets in ticket %}
+        <div class="row">
+            <div class="col gray">
+                <div class="card border">
+                    {% if commands.getDuration === true %}
+                        Billet journée
+                    {% else %}
+                        Billet Demi-Journée
+                    {% endif %}
+                    <br />
+                    Nom : {{ ticket.getLastName }}<br />
+                    Prénom : {{ ticket.getFirstName }}<br />
+                    Date de naissance : {{ ticket.getBirthDate|date("d/m/Y") }}<br />
+                    Tarif réduit :
+                    {% if ticket.getDiscount === true %}
+                    Oui
+                    {% else %}
+                    Non
+                    {% endif %}
+                    <br />
+                    Nationnalité : {{ ticket.getCountry }}<br />
+                    Prix du billet : {{ ticket.getPrice }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <div class="row">
+            <div class="col footer">
+                <div class="card">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/index.cfm/CGV">Conditions générales</a></li>
+                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/assets/CGV-B2C-Prod/EN_CGV_EPML_GROUPES.pdf">Conditions générales pour les groupes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col mt-1">
+                <p class="text-center">© Musée du Louvre - All rights reserved</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /.container -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    {% block javascripts %}{% endblock %}
+    {{ commands.getMail() }}
+</body>
+</html>
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+
+    body{
+        background: #331107;
+    }
+
+    .container, .col, .row, .card{
+        padding: 0;
+    }
+
+    .nopadding{
+        padding:0 !important;
+    }
+
+    h1{
+        color: white;
+    }
+
+    .header{
+        background: #222;
+    }
+
+    .red .card{
+        background: #C82D00 url('https://www.ticketlouvre.fr/louvre/b2c/assets/img/louvre/home_crumb.png') 2% center no-repeat;
+    }
+
+    .ban .card{
+        padding: 10px 20px 0px;
+    }
+
+    .ban h2{
+        font-family: Georgia, sans-serif;
+        font-weight: 400;
+        line-height: 35px;
+    }
+
+    .ban p{
+        color: rgb(192, 57, 43);
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+    }
+
+    .gray .card{
+        background: rgb(78, 78, 78);
+        color: white;
+        font-weight: bold;
+        padding:5px;
+    }
+
+    .card{
+        border:none;
+    }
+
+    .form-control, .btn-primary, .card{
+        border-radius: 0;
+    }
+
+    .list-group a, .btn-primary, .btn-primary:active{
+        background: #9a2200;
+        border-color:  darkred;
+        color: white;
+    }
+
+    .list-group .active, .btn-primary:hover{
+        background: #C82D00;
+        border-color:00,0  darkred;
+    }
+
+    .nopadding .card{
+        padding: 0px 30px !important;
+    }
+
+    /* -- Tickets form -- */
+
+
+    legend{
+        display:none;
+    }
+
+    fieldset.form-group{
+        border:1px solid black;
+        border-radius: 5px;
+        padding: 10px;
+        width:49%;margin-left:5px;float:left;
+    }
+    fieldset.form-group fieldset{
+        border:none;
+        padding:none;
+        float:none;
+        width: 100%;
+    }
+
+    .footer li:first-child{
+        list-style: none;
+    }
+
+    .footer .card{
+        padding:0;
+        padding-top: 10px;
+        padding-left: 20px;
+    }
+
+    .footer a{
+        color: grey;
+        font-size: 0.8em
+    }
+
+    .copyright{
+        background: #222;
+        color: #BBB;
+        font-size: 0.7em;
+    }
+
+    .no-gutters{
+        margin:0;
+        padding:0;
+    }
+
+</style>
+{% endblock %}
