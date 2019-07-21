@@ -55,18 +55,18 @@
         <div class="row">
             <div class="col gray">
                 <div class="card">
-                    Vos billets :
+                    Vos billets pour la visite du {{ commands.getDateVisit|date("d/m/Y") }} :
                 </div>
             </div>
         </div>
 
 
 
-        {% for commands.getTickets in ticket %}
+        {% for ticket in commands.getTickets %}
         <div class="row">
-            <div class="col gray">
+            <div class="col white">
                 <div class="card border">
-                    {% if commands.getDuration === true %}
+                    {% if commands.getDuration == true %}
                         Billet journée
                     {% else %}
                         Billet Demi-Journée
@@ -76,7 +76,7 @@
                     Prénom : {{ ticket.getFirstName }}<br />
                     Date de naissance : {{ ticket.getBirthDate|date("d/m/Y") }}<br />
                     Tarif réduit :
-                    {% if ticket.getDiscount === true %}
+                    {% if ticket.getDiscount == true %}
                     Oui
                     {% else %}
                     Non
