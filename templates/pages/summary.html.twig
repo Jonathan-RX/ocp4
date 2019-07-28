@@ -21,26 +21,37 @@
             </div>
         </div>
     </div>
-{% for ticket in tickets %}
 <div class="row bg-white">
     <div class="col-sm nopadding">
-        <div class="card p-2 pl-3 ticket">
-            Nom: {{ ticket.getLastName }}<br />
-            Prénom: {{ ticket.getFirstName }}<br />
-            Pays: {{ ticket.getCountry }}<br />
-            Date de naissance: {{ ticket.getBirthDate|date('d/m/Y') }}<br />
-            Tarif réduit:
+        <div class="card p-2 pl-3 ticket table-responsive">
+            <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Tarif réduit</th>
+                    <th>Coût billet</th>
+                </tr>
+            </thead>
+             {% for ticket in tickets %}
+           <tr>
+                <td>{{ ticket.getLastName }}</td>
+                <td>{{ ticket.getFirstName }}</td>
+                <td>
                 {% if ticket.getDiscount == true %}
                     Oui
                 {% else %}
                     Non
-                {% endif %}<br />
-            Prix du billet: {{ ticket.getPrice }} €
+                {% endif %}
+                </td>
+               <td>{{ ticket.getPrice }} €</td>
+           </tr>
+             {% endfor %}
+            </table>
         </div>
     </div>
 </div>
 
-{% endfor %}
 
 <div class="row bg-white">
     <div class="col-sm nopadding">
@@ -63,3 +74,5 @@
 
 {% block stylesheets  %}
 {% endblock %}
+
+{% block sectionTitle 'Récapitulatif avant règlement' %}

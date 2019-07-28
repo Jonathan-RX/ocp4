@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Musée du Louvre, billetterie' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col">
+            <div class="card pl-4">
+                <h2>Votre commande pour le {{ commands.getDateVisit|date("d/m/Y") }} a bien été validée</h2>
+                Nous vous remercions de votre confiance.<br /><br />
+                Vous recevrez rapidement un mail récapitulatif contenant vos billets à l'adresse {{ commands.getMail() }}.<br /><br />
+                N'oubliez pas de présenter vos billets ainsi que les pièces justificatives le jours de votre visite.<br />
+                Afin d'éviter tout problème, nous vous recommandons d'imprimer le mail récapitulatif avant votre visite.<br /><br />
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block sectionTitle 'Fin de votre commande' %}

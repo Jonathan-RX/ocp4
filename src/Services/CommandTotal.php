@@ -37,7 +37,7 @@ class CommandTotal
         $priceATI = 0;
 
         foreach($tickets as $t){
-            $priceATI = $t->getPrice();
+            $priceATI += $t->getPrice();
         }
 
         return $priceATI;
