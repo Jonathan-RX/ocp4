@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Musée du Louvre, billetterie' %}
+{% block title %}
+{% trans %}Louvre Museum, ticket office{% endtrans %}
+{% endblock %}
 
 {% block body %}
 
@@ -25,7 +27,7 @@
     <div class="row">
         <div class="col">
             <div class="card pl-4">
-                {{ form_row(form.valider, { 'label': 'Valider' }) }}
+                {{ form_row(form.valider, { 'label': 'Validate' }) }}
             </div>
         </div>
     </div>
@@ -64,4 +66,6 @@
     <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 {% endblock %}
 
-{% block sectionTitle 'Votre commande' %}
+{% block sectionTitle %}
+{% trans %}Your order{% endtrans %}
+{% endblock %}

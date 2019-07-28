@@ -21,24 +21,26 @@ class CommandsType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
-                'label' => 'Jours de votre visite'
+                'label' => 'Day of your visit'
             ])
             ->add('nbr_tickets', IntegerType::class, [
-                'label'=>'Nombre de tickets'
+                'label'=>'Number of tickets'
             ])
             ->add('duration', ChoiceType::class, [
                 'choices' => [
-                    'Journée' => true,
-                    'Demi-journée' => false
+                    'Day' => true,
+                    'Half day' => false
                 ],
                 'attr' => ['class' => 'duration'],
-                'placeholder' => 'Choix du type de billet',
-                'label' => 'Durée de la visite'
+                'placeholder' => 'Choice of ticket type',
+                'label' => 'Duration of the visit'
             ])
             ->add('mail', EmailType::class, [
-                'label' => 'Adresse mail'
+                'label' => 'Mail address'
             ])
-            ->add('valider', SubmitType::class)
+            ->add('valider', SubmitType::class, [
+                'label' => 'Validate'
+            ])
         ;
     }
 
