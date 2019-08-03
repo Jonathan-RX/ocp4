@@ -1,7 +1,17 @@
-Louvre Museum, ticket office: Musée du Louvre, billetterie
+# Base page, general
 Official ticket office of the Louvre Museum: Billetterie officielle du musée du Louvre
 Welcome to the official website of the Louvre: Bienvenue sur le site officiel de vente en ligne du Louvre
 In busy times, the online booking of your time slot, which alone can guarantee your entrance to the museum, is highly recommended.: En période de forte affluence, la réservation en ligne de votre créneau horaire, qui seul peut garantir votre entrée au musée, est fortement recommandée.
+Terms and conditions: Conditions générales
+General conditions for groups: Conditions générales pour les groupes
+© Louvre Museum - All rights reserved: © Musée du Louvre - Tous droits réservés
+0: 0
+1: 1
+Yes: Oui
+No: Non
+en-GB: fr-FR
+# Command page, start
+Louvre Museum, ticket office: Musée du Louvre, billetterie
 Day of your visit: Jour de votre visite
 Number of tickets: Nombre de tickets
 Duration of the visit: Durée de la visite
@@ -11,6 +21,39 @@ Half day: Demi-journée
 Mail address: Adresse mail
 Validate: Valider
 Your order: Votre commande
-Terms and conditions: Conditions générales
-General conditions for groups: Conditions générales pour les groupes
-© Louvre Museum - All rights reserved: © Musée du Louvre - Tous droits réservés
+# Tickets page, second step
+Louvre Museum, creation of tickets: Musée du Louvre, création des tickets
+Choice of your tickets: Choix de vos tickets
+Birthday date: Date de naissance
+First name: Prénom
+Last name: Nom
+Reduced price: Tarif réduit
+Country: Pays
+# Summary page, third step
+Louvre Museum, Summary: Musée du Louvre, Récapitulatif
+Summary: Récapitulatif
+Information of the visit: Informations de la visite
+Ticket cost: Coût billet
+Total order: Total de la commande
+Total without taxes: Total hors taxes
+Taxes: TVA
+Total all taxes included: Total TTC
+Pay the order: Régler la commande
+Summary before regulation: Récapitulatif avant règlement
+# Redirect
+Please wait: Veuillez patienter
+# Email
+Thank you for buying your tickets on our website: Merci pour l'achat de vos billets sur notre site
+You will find below your digital tickets, to present during your visit accompanied with the proof of the age of the visitors, like a card of identity, license of drive, passport, etc.: Vous trouverez ci dessous vos billets numériques, à présenter lors de votre visite accompagnés des justificatifs de l'age des visiteurs, comme une carte d'identitée, permis de conduire, passeport, etc.
+If you benefit from a reduced rate, do not forget to present your corresponding proof (student card, veteran, etc.): Si vous bénéficiez d'un tarif réduit, n'oubliez pas de présenter votre justificatif correspond (carte étudiant, ancien combattant, etc)
+Your tickets for the visit of the: Vos billets pour la visite du
+Day ticket: Billet journée
+Half day ticket: Billet demi-journée
+# End of order
+End of your order: Fin de votre commande
+Your order for the: Votre commande pour le
+has been validated: a bien été validée
+We thank you for your trust: Nous vous remercions de votre confiance
+You will quickly receive a summary email containing your tickets to the address: Vous recevrez rapidement un mail récapitulatif contenant vos billets à l'adresse
+Do not forget to present your tickets and the vouchers on the day of your visit: N'oubliez pas de présenter vos billets ainsi que les pièces justificatives le jours de votre visite
+To avoid any problem, we recommend that you print the summary e-mail before your visit: Afin d'éviter tout problème, nous vous recommandons d'imprimer le mail récapitulatif avant votre visite
