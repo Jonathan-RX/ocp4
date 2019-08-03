@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}{% trans %}Thank you for buying your tickets on our website{% endtrans %}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
@@ -14,14 +14,6 @@
 
     <!-- Page Content -->
     <div class="container">
-        {% for label, messages in app.flashes(['success', 'warning']) %}
-            {% for message in messages %}
-                <div class="flash-{{ label }} flash-message col-s12 center">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-
 
         <div class="row header pt-3 justify-content-center justify-content-md-start">
 
@@ -29,7 +21,7 @@
                 <img src="https://www.ticketlouvre.fr/louvre/b2c/assets/img/logo_Louvre.png" />
             </div>
             <div class="col-ld-9 pl-4">
-                <h1 class="my-3 h2 font-weight-light">Billetterie officielle du musée du Louvre</h1>
+                <h1 class="my-3 h2 font-weight-light">{% trans %}Official ticket office of the Louvre Museum{% endtrans %}</h1>
             </div>
             <!-- /.col-lg-3 -->
         </div>
@@ -45,9 +37,9 @@
         <div class="row">
             <div class="col ban">
                 <div class="card">
-                    <h2>Merci pour l'achat de vos billets sur notre site</h2>
-                    <p>Vous trouverez ci dessous vos billets numériques, à présenter lors de votre visite accompagnés des justificatifs de l'age des visiteurs, comme une carte d'identitée, permis de conduire, passeport, etc. </p>
-                    <p>Si vous bénéficiez d'un tarif réduit, n'oubliez pas de présenter votre justificatif correspond (carte étudiant, ancien combattant, etc)</p>
+                    <h2>{% trans %}Thank you for buying your tickets on our website{% endtrans %}</h2>
+                    <p>{% trans %}You will find below your digital tickets, to present during your visit accompanied with the proof of the age of the visitors, like a card of identity, license of drive, passport, etc.{% endtrans %} </p>
+                    <p>{% trans %}If you benefit from a reduced rate, do not forget to present your corresponding proof (student card, veteran, etc.){% endtrans %}</p>
                 </div>
             </div>
         </div>
@@ -55,7 +47,7 @@
         <div class="row">
             <div class="col gray">
                 <div class="card">
-                    Vos billets pour la visite du {{ commands.getDateVisit|date("d/m/Y") }} :
+                    {% trans %}Your tickets for the visit of the{% endtrans %} {{ commands.getDateVisit|date("d/m/Y") }} :
                 </div>
             </div>
         </div>
@@ -67,23 +59,23 @@
             <div class="col white">
                 <div class="card border">
                     {% if commands.getDuration == true %}
-                        Billet journée
+                        {% trans %}Day ticket{% endtrans %}
                     {% else %}
-                        Billet Demi-Journée
+                        {% trans %}Half day ticket{% endtrans %}
                     {% endif %}
                     <br />
-                    Nom : {{ ticket.getLastName }}<br />
-                    Prénom : {{ ticket.getFirstName }}<br />
-                    Date de naissance : {{ ticket.getBirthDate|date("d/m/Y") }}<br />
-                    Tarif réduit :
+                    {% trans %}Last name{% endtrans %} : {{ ticket.getLastName }}<br />
+                    {% trans %}First name{% endtrans %} : {{ ticket.getFirstName }}<br />
+                    {% trans %}Birthday date{% endtrans %} : {{ ticket.getBirthDate|date("d/m/Y") }}<br />
+                    {% trans %}Reduced price{% endtrans %} :
                     {% if ticket.getDiscount == true %}
-                    Oui
+                        {% trans %}Yes{% endtrans %}
                     {% else %}
-                    Non
+                        {% trans %}No{% endtrans %}
                     {% endif %}
                     <br />
-                    Nationnalité : {{ ticket.getCountry }}<br />
-                    Prix du billet : {{ ticket.getPrice }}
+                    {% trans %}Country{% endtrans %} : {{ ticket.getCountry }}<br />
+                    {% trans %}Ticket cost{% endtrans %} : {{ ticket.getPrice }}
                 </div>
             </div>
         </div>
@@ -94,15 +86,15 @@
             <div class="col footer">
                 <div class="card">
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/index.cfm/CGV">Conditions générales</a></li>
-                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/assets/CGV-B2C-Prod/EN_CGV_EPML_GROUPES.pdf">Conditions générales pour les groupes</a></li>
+                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/index.cfm/CGV">{% trans %}Terms and conditions{% endtrans %}</a></li>
+                        <li class="list-inline-item"><a href="https://www.ticketlouvre.fr/louvre/b2c/assets/CGV-B2C-Prod/EN_CGV_EPML_GROUPES.pdf">{% trans %}General conditions for groups{% endtrans %}</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row copyright">
             <div class="col mt-1">
-                <p class="text-center">© Musée du Louvre - All rights reserved</p>
+                <p class="text-center">{% trans %}© Louvre Museum - All rights reserved{% endtrans %}</p>
             </div>
         </div>
     </div>

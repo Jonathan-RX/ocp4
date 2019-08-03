@@ -18,20 +18,22 @@ class TicketsType extends AbstractType
     {
         $builder
             ->add('first_name', TextType::class, [
-            'label'=>'Prénom'
+            'label'=>'First name'
         ])
-            ->add('last_name', TextType::class)
+            ->add('last_name', TextType::class, [
+                'label'=>'Last name'
+            ])
             ->add('country', CountryType::class)
             ->add('birth_date', BirthdayType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
-                'label' => 'Date de naissance',
+                'label' => 'Birthday date',
                 'format' => 'dd/mm/yyyy',
             ])
             ->add('discount', CheckboxType::class, [
             'required' => false,
-            'label' => 'Tarif réduit'
+            'label' => 'Reduced price'
         ])
         ;
     }

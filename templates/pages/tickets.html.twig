@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Musée du Louvre, création des tickets' %}
+{% block title %}
+{% trans %}
+Louvre Museum, creation of tickets
+{% endtrans %}
+{% endblock %}
 
 {% block body %}
 
@@ -20,7 +24,7 @@
                 <div class="card p-2 pl-3 ticket">
 
                     {{ form_errors(form) }}
-                    <button class="btn btn-primary">Valider</button>
+                    <button class="btn btn-primary">{% trans %}Validate{% endtrans %}</button>
                 </div>
             </div>
     </div>
@@ -40,7 +44,7 @@
                 format: 'dd/mm/yyyy',
                 'startView': '3',
                 endDate: '+0d',
-                language: 'fr-FR'
+                language: '{% trans %}en-GB{% endtrans %}'
             });
         });
     </script>
@@ -50,4 +54,8 @@
     <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 {% endblock %}
 
-{% block sectionTitle 'Choix de vos tickets' %}
+{% block sectionTitle %}
+{% trans %}
+Choice of your tickets
+{% endtrans %}
+{% endblock %}

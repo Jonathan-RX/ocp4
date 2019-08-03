@@ -46,7 +46,7 @@
             $('.js-datepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 startDate: '0d',
-                language: 'fr-FR',
+                language: '{% trans %}en-GB{% endtrans %}',
                 daysOfWeekDisabled: [2,0],
                 beforeShowDay: function (date) {
                     var curr_date = date.getDate();

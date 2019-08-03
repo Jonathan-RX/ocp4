@@ -1,22 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Musée du Louvre, Récapitulatif' %}
+{% block title %}
+{% trans %}
+Louvre Museum, Summary
+{% endtrans %}
+{% endblock %}
 
 {% block body %}
 
     <div class="row bg-white">
-        <h3 class="col-sm">Recapitulatif</h3>
+        <h3 class="col-sm">{% trans %}Summary{% endtrans %}</h3>
     </div>
     <div class="row bg-white">
         <div class="col-sm nopadding">
             <div class="card p-2 pl-3 ticket">
-            <h5>Informations de la visite</h5>
-                Jour de la visite: {{ commands.getDateVisit|date("d/m/Y") }}<br />
-                Période:
+            <h5>{% trans %}Information of the visit{% endtrans %}</h5>
+                {% trans %}Day of your visit{% endtrans %}: {{ commands.getDateVisit|date("d/m/Y") }}<br />
+                {% trans %}Duration of the visit{% endtrans %}:
                 {% if commands.getDuration == true %}
-                    Journée
+                    {% trans %}Day{% endtrans %}
                 {% else %}
-                    Demi-Journée
+                    {% trans %}Half day{% endtrans %}
                 {% endif %}
             </div>
         </div>
@@ -27,10 +31,10 @@
             <table class="table">
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Tarif réduit</th>
-                    <th>Coût billet</th>
+                    <th>{% trans %}Last name{% endtrans %}</th>
+                    <th>{% trans %}First name{% endtrans %}</th>
+                    <th>{% trans %}Reduced price{% endtrans %}</th>
+                    <th>{% trans %}Ticket cost{% endtrans %}</th>
                 </tr>
             </thead>
              {% for ticket in tickets %}
@@ -39,9 +43,9 @@
                 <td>{{ ticket.getFirstName }}</td>
                 <td>
                 {% if ticket.getDiscount == true %}
-                    Oui
+                    {% trans %}Yes{% endtrans %}
                 {% else %}
-                    Non
+                    {% trans %}No{% endtrans %}
                 {% endif %}
                 </td>
                <td>{{ ticket.getPrice }} €</td>
@@ -57,11 +61,11 @@
     <div class="col-sm nopadding">
         <div class="card p-2 pl-3 ticket">
             <form action="{{ path('striperedirect', {'order_number': commands.getOrderNumber()}) }}" method="post">
-                <h5>Total de la commande</h5>
-                Total HT: {{ pricewt }} €<br />
-                TVA: {{ taxes }} € <br />
-                Total TTC: {{ priceati }} €
-                <p><button class="ui button" type="submit">Régler la commande</button></p>
+                <h5>{% trans %}Total order{% endtrans %}</h5>
+                {% trans %}Total without taxes{% endtrans %}: {{ pricewt }} €<br />
+                {% trans %}Taxes{% endtrans %}: {{ taxes }} € <br />
+                {% trans %}Total all taxes included{% endtrans %}: {{ priceati }} €
+                <p><button class="ui button" type="submit">{% trans %}Pay the order{% endtrans %}</button></p>
             </form>
         </div>
     </div>
@@ -75,4 +79,8 @@
 {% block stylesheets  %}
 {% endblock %}
 
-{% block sectionTitle 'Récapitulatif avant règlement' %}
+{% block sectionTitle %}
+{% trans %}
+Summary before regulation
+{% endtrans %}
+{% endblock %}

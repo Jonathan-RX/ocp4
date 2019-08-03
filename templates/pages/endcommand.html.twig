@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Musée du Louvre, billetterie' %}
+{% block title %}
+    {% trans %}Louvre Museum, ticket office{% endtrans %}
+{% endblock %}
 
 {% block body %}
 
     <div class="row">
         <div class="col">
             <div class="card pl-4">
-                <h2>Votre commande pour le {{ commands.getDateVisit|date("d/m/Y") }} a bien été validée</h2>
-                Nous vous remercions de votre confiance.<br /><br />
-                Vous recevrez rapidement un mail récapitulatif contenant vos billets à l'adresse {{ commands.getMail() }}.<br /><br />
-                N'oubliez pas de présenter vos billets ainsi que les pièces justificatives le jours de votre visite.<br />
-                Afin d'éviter tout problème, nous vous recommandons d'imprimer le mail récapitulatif avant votre visite.<br /><br />
+                <h2>{% trans %}Your order for the{% endtrans %} {{ commands.getDateVisit|date("d/m/Y") }} {% trans %}has been validated{% endtrans %}.</h2>
+                {% trans %}We thank you for your trust{% endtrans %}.<br /><br />
+                {% trans %}You will quickly receive a summary email containing your tickets to the address{% endtrans %} {{ commands.getMail() }}.<br /><br />
+                {% trans %}Do not forget to present your tickets and the vouchers on the day of your visit{% endtrans %}.<br />
+                {% trans %}To avoid any problem, we recommend that you print the summary e-mail before your visit{% endtrans %}.<br /><br />
 
             </div>
         </div>
@@ -20,4 +22,6 @@
 
 {% endblock %}
 
-{% block sectionTitle 'Fin de votre commande' %}
+{% block sectionTitle %}
+    {% trans %}End of your order{% endtrans %}
+{% endblock %}
