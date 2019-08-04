@@ -19,6 +19,7 @@ class CommandsType extends AbstractType
         $builder
             ->add('date_visit', DateType::class, [
                 'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
                 'label' => 'Day of your visit'

@@ -29,7 +29,7 @@ class Commands
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      * @Assert\DateTime
-     * @Assert\GreaterThanOrEqual("today", message="Réservation impossible pour un jour passé.")
+     * @Assert\GreaterThanOrEqual("today", message="Reservation impossible for a day spent.")
      * @AcmeAssert\DateCommands
      * @AcmeAssert\CheckCommandHours
      * @AcmeAssert\DateTickets
@@ -58,7 +58,7 @@ class Commands
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\GreaterThanOrEqual(1, message="Veuillez choisir un nombre de ticket")
+     * @Assert\GreaterThanOrEqual(1, message="Please choose a number of tickets")
      */
     private $nbr_tickets;
 

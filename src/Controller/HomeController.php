@@ -12,11 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/{order_number}", defaults={"order_number"=null}, name="home")
      */
-    public function index(Request $request, CommandsTypeHandler $handler)
+    public function index(Request $request, CommandsTypeHandler $handler, $order_number)
     {
-        $commands = new Commands();
+        if($order_number === 'null'){
+            $commands = new Commands();
+        }else{
+            $repository = $this->getDoctrine()->getRepository(Commands::class);
+            $commands = $repository->findOneBy(['order_number'=>$order_number]);
+        }
         $form = $this->createForm(CommandsType::class, $commands);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){

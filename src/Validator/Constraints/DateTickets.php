@@ -10,5 +10,5 @@ use Symfony\Component\Validator\Constraint;
  */
 class DateTickets extends Constraint
 {
-    public $message = 'La date désirée ne dispose pas de suffisament de tickets disponibles.';
+    public $message = 'The desired date does not have enough tickets available.';
 }

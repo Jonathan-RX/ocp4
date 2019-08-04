@@ -11,5 +11,5 @@ use Symfony\Component\Validator\Constraint;
  */
 class DateCommands extends Constraint
 {
-    public $message = 'La réservation est impossible un jour de fermeture';
+    public $message = 'Reservation is not possible on a closing day';
 }

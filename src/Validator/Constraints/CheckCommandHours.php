@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraint;
  */
 class CheckCommandHours extends Constraint
 {
-    public $message = 'La date de votre commande est indisponible';
-    public $messageHourToday = 'La réservation pour le jour même est impossible après 18h.';
-    public $messageHalfToday = 'La réservation pour une journée complète est impossible après 14h.';
-    public $messageToManyTickets = 'La date désirée ne dispose pas de suffisament de tickets disponibles.';
+    public $message = 'The date of your order is unavailable';
+    public $messageHourToday = 'The reservation for the same day is impossible after 18h.';
+    public $messageHalfToday = 'The booking for a full day is impossible after 14h.';
+    public $messageToManyTickets = 'The desired date does not have enough tickets available.';
 
 }

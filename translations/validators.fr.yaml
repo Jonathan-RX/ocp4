@@ -1,0 +1,13 @@
+# Command page, start
+Reservation impossible for a day spent.: Réservation impossible pour un jour passé.
+Please choose a number of tickets: Veuillez choisir un nombre de ticket
+The date of your order is unavailable: La date de votre commande est indisponible
+The booking for a full day is impossible after 14h.: La réservation pour une journée complète est impossible après 14h.
+The reservation for the same day is impossible after 18h.: La réservation pour le jour même est impossible après 18h.
+The desired date does not have enough tickets available.: La date désirée ne dispose pas de suffisament de tickets disponibles.
+Reservation is not possible on a closing day: La réservation est impossible un jour de fermeture
+# Tickets page, second step
+Your name can content only letters and hyphens: Votre nom ne peut contenir que des lettres et traits d'unions
+Please fill in this field: Veuillez remplir ce champ
+Your name is too long: Votre nom est trop long
+An error occurred, please reload the page: Une erreur s'est produite, veuillez recharger la page

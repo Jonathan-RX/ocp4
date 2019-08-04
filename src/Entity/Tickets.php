@@ -25,35 +25,43 @@ class Tickets
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Veuillez remplir ce champ")
-     * @Assert\Length(min = 2, max = 50, minMessage="", maxMessage="")
+     * @Assert\NotNull(message="Please fill in this field")
+     * @Assert\Length(min = 2, max = 50, minMessage="Please fill in this field", maxMessage="Your name is too long")
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]+$/i",
+     *     message="Your name can content only letters and hyphens")
      */
     private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Veuillez remplir ce champ")
-     * @Assert\Length(min = 2, max = 50, minMessage="", maxMessage="")
+     * @Assert\NotNull(message="Please fill in this field")
+     * @Assert\Length(min = 2, max = 50, minMessage="Please fill in this field", maxMessage="Your name is too long")
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]+$/i",
+     *     message="Your name can content only letters and hyphens")
      */
     private $last_name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Veuillez remplir ce champ")
+     * @Assert\NotNull(message="Please fill in this field")
      * @Assert\Country
      */
     private $country;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotNull(message="Veuillez remplir ce champ")
+     * @Assert\NotNull(message="Please fill in this field")
+     * @Assert\LessThan("today")
+     * @Assert\GreaterThan("01/01/1900 UTC")
      * @Assert\DateTime
      */
     private $birth_date;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
-     * @Assert\NotNull(message="Une erreur s'est produite, veuillez recharger la page")
+     * @Assert\NotNull(message="An error occurred, please reload the page")
      */
     private $discount;
 

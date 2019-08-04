@@ -23,7 +23,9 @@ class TicketsType extends AbstractType
             ->add('last_name', TextType::class, [
                 'label'=>'Last name'
             ])
-            ->add('country', CountryType::class)
+            ->add('country', CountryType::class, [
+                'preferred_choices' => ['FR']
+            ])
             ->add('birth_date', BirthdayType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
@@ -33,7 +35,8 @@ class TicketsType extends AbstractType
             ])
             ->add('discount', CheckboxType::class, [
             'required' => false,
-            'label' => 'Reduced price'
+            'label' => 'Reduced price',
+                'attr' => ['class' => 'discount']
         ])
         ;
     }

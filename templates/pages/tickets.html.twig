@@ -46,6 +46,14 @@ Louvre Museum, creation of tickets
                 endDate: '+0d',
                 language: '{% trans %}en-GB{% endtrans %}'
             });
+            $('.discount').change(function(){
+                parent = $(this).parent('div');
+                if (this.checked) {
+                    $('<em>Pour bénéficier d\'un tarif réduit, vous devrez présenter une pièce justificative lors de votre accès au musée (carte étudiant, ancien combattant, etc)</em>').insertAfter(parent);
+                }else{
+                    $(parent).next('em').remove();
+                }
+            })
         });
     </script>
 {% endblock %}
