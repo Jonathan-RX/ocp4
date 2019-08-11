@@ -22,6 +22,9 @@ Louvre Museum, Summary
                 {% else %}
                     {% trans %}Half day{% endtrans %}
                 {% endif %}
+                <p>
+                    <a href="{{ path('home', {'order_number': commands.getOrderNumber}) }}">Modifier</a>
+                </p>
             </div>
         </div>
     </div>
@@ -52,6 +55,9 @@ Louvre Museum, Summary
            </tr>
              {% endfor %}
             </table>
+            <p>
+                <a href="{{ path('tickets', {'order_number': commands.getOrderNumber}) }}">Modifier</a>
+            </p>
         </div>
     </div>
 </div>

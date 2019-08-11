@@ -11,3 +11,5 @@ Your name can content only letters and hyphens: Votre nom ne peut contenir que d
 Please fill in this field: Veuillez remplir ce champ
 Your name is too long: Votre nom est trop long
 An error occurred, please reload the page: Une erreur s'est produite, veuillez recharger la page
+The date must be greater than 01 January 1900: La date doit être supérieur au 01 janvier 1900
+The date of birth must be less than the current date.: La date de naissance doit être inférieur à la date du jour.

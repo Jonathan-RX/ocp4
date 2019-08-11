@@ -14,13 +14,6 @@
 
     <!-- Page Content -->
     <div class="container">
-        {% for label, messages in app.flashes(['success', 'warning']) %}
-            {% for message in messages %}
-                <div class="flash-{{ label }} flash-message col-s12 center">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
 
 
         <div class="row header pt-3 justify-content-center justify-content-md-start">
@@ -66,6 +59,20 @@
                 </div>
             </div>
         </div>
+
+        {% for label, messages in app.flashes(['success', 'warning', 'error']) %}
+            {% for message in messages %}
+        <div class="row">
+            <div class="col">
+                <div class="card pb-4">
+                    <div class="flash-{{ label }} flash-message col mt-1 text-center">
+                    {{ message|trans }}
+                </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        {% endfor %}
         {% block body %}{% endblock %}
 
 

@@ -43,4 +43,21 @@ class CommandTotal
         return $priceATI;
     }
 
+    public static function checkCommandHour(Commands $commands){
+        $value = $commands->getDateVisit();
+        $today = new \DateTime('today',new \DateTimeZone('Europe/Paris'));
+        $interval = $today->diff($value);
+
+        if($value < $today){
+            return false;
+        }
+        if ($interval->days === 0 AND $today->format('h') > 17) {
+            return false;
+        }
+        if($commands->getDuration() == true AND $interval->days === 0 AND date('H') > 13){
+            return false;
+        }
+        return true;
+    }
+
 }

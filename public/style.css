@@ -48,6 +48,9 @@ h1{
 .card{
     border:none;
 }
+.ticket #collection fieldset:nth-child(odd){
+clear: both;
+}
 
 .form-control, .btn-primary, .card{
     border-radius: 0;

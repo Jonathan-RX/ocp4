@@ -60,6 +60,10 @@ class StripeCheckout extends TwigExtension
         /*
          * Envoi du mail
          */
+        $this->SendValidationMail($commands);
+    }
+
+    public function SendValidationMail(Commands $commands){
         $message = (new \Swift_Message('Votre réservation pour le musée du louvre'))
             ->setFrom('jr.poub@gmail.com')
             ->setTo($commands->getMail())

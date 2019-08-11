@@ -16,7 +16,7 @@ class HomeController extends AbstractController
      */
     public function index(Request $request, CommandsTypeHandler $handler, $order_number)
     {
-        if($order_number === 'null'){
+        if($order_number === null){
             $commands = new Commands();
         }else{
             $repository = $this->getDoctrine()->getRepository(Commands::class);

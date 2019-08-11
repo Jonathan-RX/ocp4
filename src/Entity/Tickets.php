@@ -53,8 +53,8 @@ class Tickets
     /**
      * @ORM\Column(type="datetime")
      * @Assert\NotNull(message="Please fill in this field")
-     * @Assert\LessThan("today")
-     * @Assert\GreaterThan("01/01/1900 UTC")
+     * @Assert\LessThan("today", message="The date of birth must be less than the current date.")
+     * @Assert\GreaterThan("01/01/1900 UTC", message="The date must be greater than 01 January 1900")
      * @Assert\DateTime
      */
     private $birth_date;

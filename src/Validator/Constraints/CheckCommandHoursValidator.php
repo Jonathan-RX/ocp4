@@ -32,7 +32,6 @@ class CheckCommandHoursValidator extends ConstraintValidator
         $today = new \DateTime('today',new \DateTimeZone('Europe/Paris'));
         $interval = $today->diff($value);
 
-        // Check Hour for today
         if ($interval->days === 0 AND $today->format('h') > 17) {
             $this->context->buildViolation($constraint->messageHourToday)
                 ->addViolation();

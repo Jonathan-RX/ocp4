@@ -40,6 +40,7 @@ Louvre Museum, creation of tickets
 
     <script>
         $(document).ready(function() {
+            $('<em>Pour bénéficier d\'un tarif réduit, vous devrez présenter une pièce justificative lors de votre accès au musée (carte étudiant, ancien combattant, etc)</em>').insertAfter($('.discount:checked').parent('div'));
             $('.js-datepicker').datepicker({
                 format: 'dd/mm/yyyy',
                 'startView': '3',

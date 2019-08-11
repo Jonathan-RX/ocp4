@@ -31,11 +31,20 @@ class TicketsTypeHandler
     public function generateTickets(Commands $commands)
     {
         $nbrTickets = $commands->getNbrTickets();
-        $tickets = [];
-        for($i = 1; $i <= $nbrTickets; $i++)
-        {
-            $tickets[] = new Tickets();
+        $ticketsLoaded = $commands->getTickets();
+        foreach ($ticketsLoaded as $t){
+            $this->manager->remove($t);
         }
+        $tickets = [];
+        for ($i = 0; $i < $nbrTickets; $i++) {
+            if($ticketsLoaded[$i] === null){
+                $tickets[] = new Tickets();
+            }else {
+                $tickets[] = $ticketsLoaded[$i];
+                $this->manager->persist($tickets[$i]);
+            }
+        }
+        $this->manager->flush();
         return $tickets;
     }
 
