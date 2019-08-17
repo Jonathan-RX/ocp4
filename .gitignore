@@ -22,3 +22,8 @@ git.idea/
 ###< symfony/web-server-bundle ###
 .idea/deployment.xml
 .idea/workspace.xml
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
