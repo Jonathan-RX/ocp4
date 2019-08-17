@@ -1,0 +1,22 @@
+PHPUnit 8.3.4 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 7.2.14
+Configuration: /Users/nova/htdocs/ocp4/phpunit.xml
+
+E                                                                   1 / 1 (100%)
+
+Time: 67 ms, Memory: 4.00 MB
+
+There was 1 error:
+
+1) App\Tests\Controller\HomeControllerTest::testHomeIsUp
+LogicException: You must set the KERNEL_CLASS environment variable to the fully-qualified class name of your Kernel in phpunit.xml / phpunit.xml.dist or override the App\Tests\Controller\HomeControllerTest::createKernel() or App\Tests\Controller\HomeControllerTest::getKernelClass() method.
+
+/Users/nova/htdocs/ocp4/vendor/symfony/framework-bundle/Test/KernelTestCase.php:49
+/Users/nova/htdocs/ocp4/vendor/symfony/framework-bundle/Test/KernelTestCase.php:90
+/Users/nova/htdocs/ocp4/vendor/symfony/framework-bundle/Test/KernelTestCase.php:68
+/Users/nova/htdocs/ocp4/vendor/symfony/framework-bundle/Test/WebTestCase.php:34
+/Users/nova/htdocs/ocp4/tests/Controller/HomeControllerTest.php:11
+
+ERRORS!
+Tests: 1, Assertions: 0, Errors: 1.

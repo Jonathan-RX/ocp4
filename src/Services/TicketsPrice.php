@@ -25,7 +25,7 @@ class TicketsPrice
     public function priceCalcul(Tickets $tickets, Commands $commands){
         $prices = $this->entityManager->getRepository(Price::class)->findPrice();
         $birthday = $tickets->getBirthDate();
-        $diff = $birthday->diff(new \DateTime());
+        $diff = $birthday->diff($commands->getDateVisit());
         $age = $diff->y;
 
         $duration = $commands->getDuration();
