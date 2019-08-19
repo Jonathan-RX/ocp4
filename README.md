@@ -31,7 +31,9 @@ The project integrates Symfony 4.2 with composer.
 - [Symfony 4](https://github.com/symfony/symfony/tree/4.2)
 
 1. Clone Github repository
-> git clone https://github.com/Jonathan-RX/ocp4.git .
+```shell
+    git clone https://github.com/Jonathan-RX/ocp4.git
+```
 
 2. Run the Composer Install command inside directory to install all dependencies
 ```shell
