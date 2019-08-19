@@ -35,7 +35,7 @@ class StripeCheckout extends TwigExtension
 
     public static function StripeGetSession(Commands $commands, $router){
         $priceATI =  \App\Services\CommandTotal::getTotalATI($commands);
-        \Stripe\Stripe::setApiKey('sk_test_UJYp1WP5IrUlZuTUpbmKjXX400JZdbgQzq');
+        \Stripe\Stripe::setApiKey('sk_Use_Your_Stripe_API_Key');
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'customer_email' => $commands->getMail(),
@@ -65,7 +65,7 @@ class StripeCheckout extends TwigExtension
 
     public function SendValidationMail(Commands $commands){
         $message = (new \Swift_Message('Votre réservation pour le musée du louvre'))
-            ->setFrom('jr.poub@gmail.com')
+            ->setFrom('example@domain.com')
             ->setTo($commands->getMail())
             ->setBody(
                 $this->twig->render(
